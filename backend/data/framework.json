@@ -1,0 +1,289 @@
+{
+  "id": "default",
+  "name": "DVFE Framework",
+  "updatedAt": "2026-10-25T00:00:00.000Z",
+  "verdictRules": {
+    "hardGateMin": 40,
+    "goThreshold": 75,
+    "conditionalThreshold": 60,
+    "autonomyThreshold": 70
+  },
+  "pillars": [
+    {
+      "id": "desirability",
+      "code": "D",
+      "name": "1. Desirability",
+      "weight": 0.3,
+      "gate": {
+        "killBelow": 40,
+        "capBelow": null
+      },
+      "autonomyGate": false,
+      "subcriteria": [
+        {
+          "id": "D1",
+          "code": "D1",
+          "name": "Pain Frequency & Severity",
+          "weight": 0.3,
+          "maxScore": 25,
+          "redMax": 8,
+          "yellowMax": 17,
+          "rubric": {
+            "red": "Rare (monthly) or minor annoyance",
+            "yellow": "Weekly task; takes 15-30 mins",
+            "green": "Daily core bottleneck taking hours of cognitive load"
+          }
+        },
+        {
+          "id": "D2",
+          "code": "D2",
+          "name": "Unstructured Complexity (Why AI?)",
+          "weight": 0.3,
+          "maxScore": 25,
+          "redMax": 8,
+          "yellowMax": 17,
+          "rubric": {
+            "red": "Structured tabular inputs; SQL or IF/ELSE works",
+            "yellow": "Semi-structured templates; regex/OCR solves 70%",
+            "green": "Variable natural language, messy PDFs, or ambiguous intent"
+          }
+        },
+        {
+          "id": "D3",
+          "code": "D3",
+          "name": "Workflow Fit & Switching Cost",
+          "weight": 0.3,
+          "maxScore": 25,
+          "redMax": 8,
+          "yellowMax": 17,
+          "rubric": {
+            "red": "Forces user to open separate app and copy-paste",
+            "yellow": "Standalone portal, fits natural task handoffs",
+            "green": "Embedded directly inside existing UI / system of record"
+          }
+        },
+        {
+          "id": "D4",
+          "code": "D4",
+          "name": "User Pull & Adoption Incentive",
+          "weight": 0.3,
+          "maxScore": 25,
+          "redMax": 8,
+          "yellowMax": 17,
+          "rubric": {
+            "red": "Users see it as slower or a job threat",
+            "yellow": "Neutral; adopted if mandated by management",
+            "green": "High pull; eliminates tedious drudge work users hate"
+          }
+        }
+      ]
+    },
+    {
+      "id": "economics",
+      "code": "E",
+      "name": "2. Business Economics",
+      "weight": 0.25,
+      "gate": {
+        "killBelow": 40,
+        "capBelow": null
+      },
+      "autonomyGate": false,
+      "subcriteria": [
+        {
+          "id": "E1",
+          "code": "E1",
+          "name": "Value Pool per Transaction",
+          "weight": 0.25,
+          "maxScore": 25,
+          "redMax": 8,
+          "yellowMax": 17,
+          "rubric": {
+            "red": "Pennies saved per run",
+            "yellow": "Saves $1-$3 of internal operational time per run",
+            "green": "Saves $10+ in specialist labor or drives direct revenue"
+          }
+        },
+        {
+          "id": "E2",
+          "code": "E2",
+          "name": "Inference & Token Margin",
+          "weight": 0.25,
+          "maxScore": 25,
+          "redMax": 8,
+          "yellowMax": 17,
+          "rubric": {
+            "red": "Compute costs eat >50% of value created",
+            "yellow": "Healthy margin (3x-5x value-to-compute ratio)",
+            "green": "High margin (>10x ratio; e.g. $0.05 token vs $10 labor)"
+          }
+        },
+        {
+          "id": "E3",
+          "code": "E3",
+          "name": "Implementation & Integration CapEx",
+          "weight": 0.25,
+          "maxScore": 25,
+          "redMax": 8,
+          "yellowMax": 17,
+          "rubric": {
+            "red": "12+ months of custom legacy re-platforming",
+            "yellow": "3-6 months; moderate API and data pipeline work",
+            "green": "<3 months; modular API integration with existing systems"
+          }
+        },
+        {
+          "id": "E4",
+          "code": "E4",
+          "name": "Maintenance & Drift TCO",
+          "weight": 0.25,
+          "maxScore": 25,
+          "redMax": 8,
+          "yellowMax": 17,
+          "rubric": {
+            "red": "Requires full-time DS team constantly retraining",
+            "yellow": "Quarterly model evals and minor prompt updates",
+            "green": "Stable domain knowledge; automated evals catch drift"
+          }
+        }
+      ]
+    },
+    {
+      "id": "feasibility",
+      "code": "F",
+      "name": "3. Data & Tech Feasibility",
+      "weight": 0.25,
+      "gate": {
+        "killBelow": 40,
+        "capBelow": null
+      },
+      "autonomyGate": false,
+      "subcriteria": [
+        {
+          "id": "F1",
+          "code": "F1",
+          "name": "Data Accessibility & Integration",
+          "weight": 0.25,
+          "maxScore": 25,
+          "redMax": 8,
+          "yellowMax": 17,
+          "rubric": {
+            "red": "Trapped on air-gapped mainframes or paper",
+            "yellow": "Accessible via batch exports or moderate ETL",
+            "green": "Clean real-time APIs, cloud data lakes, or indexed stores"
+          }
+        },
+        {
+          "id": "F2",
+          "code": "F2",
+          "name": "Data Quality & Ground Truth",
+          "weight": 0.25,
+          "maxScore": 25,
+          "redMax": 8,
+          "yellowMax": 17,
+          "rubric": {
+            "red": "Outdated manuals; heavy OCR noise; no labels",
+            "yellow": "Mostly accurate; needs deduplication/chunking",
+            "green": "Curated, version-controlled KB with historical labels"
+          }
+        },
+        {
+          "id": "F3",
+          "code": "F3",
+          "name": "Accuracy vs. Task Complexity",
+          "weight": 0.25,
+          "maxScore": 25,
+          "redMax": 8,
+          "yellowMax": 17,
+          "rubric": {
+            "red": "Multi-hop math/logic where LLMs hallucinate",
+            "yellow": "Hits ~80% out of box; needs RAG/few-shot tuning",
+            "green": "Summarization, extraction, or classification (>90%)"
+          }
+        },
+        {
+          "id": "F4",
+          "code": "F4",
+          "name": "Latency & Throughput SLA",
+          "weight": 0.25,
+          "maxScore": 25,
+          "redMax": 8,
+          "yellowMax": 17,
+          "rubric": {
+            "red": "Requires sub-50ms real-time response",
+            "yellow": "Interactive UI (2-5 sec streaming acceptable)",
+            "green": "Asynchronous or batch processing (10-60s+ is fine)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "governance",
+      "code": "G",
+      "name": "4. Governance & Risk",
+      "weight": 0.2,
+      "gate": {
+        "killBelow": 40,
+        "capBelow": 70
+      },
+      "autonomyGate": true,
+      "subcriteria": [
+        {
+          "id": "G1",
+          "code": "G1",
+          "name": "Error Blast Radius",
+          "weight": 0.2,
+          "maxScore": 25,
+          "redMax": 8,
+          "yellowMax": 17,
+          "rubric": {
+            "red": "Financial loss, legal liability, or customer harm",
+            "yellow": "Customer annoyance, rework, or minor inefficiency",
+            "green": "Zero external impact; easily spotted by internal user"
+          }
+        },
+        {
+          "id": "G2",
+          "code": "G2",
+          "name": "Human-in-the-Loop (HITL) Catch",
+          "weight": 0.2,
+          "maxScore": 25,
+          "redMax": 8,
+          "yellowMax": 17,
+          "rubric": {
+            "red": "Fully autonomous execution; zero human review",
+            "yellow": "Human spot-checks random sample or escalations",
+            "green": "100% human review with citations before final commit"
+          }
+        },
+        {
+          "id": "G3",
+          "code": "G3",
+          "name": "Regulatory & Explainability Fit",
+          "weight": 0.2,
+          "maxScore": 25,
+          "redMax": 8,
+          "yellowMax": 17,
+          "rubric": {
+            "red": "Strict mandate for deterministic reason codes",
+            "yellow": "Regulated industry, AI used for non-binding draft",
+            "green": "Unregulated internal workflow; source links suffice"
+          }
+        },
+        {
+          "id": "G4",
+          "code": "G4",
+          "name": "PII, Privacy & Security Posture",
+          "weight": 0.2,
+          "maxScore": 25,
+          "redMax": 8,
+          "yellowMax": 17,
+          "rubric": {
+            "red": "Raw PII/PCI sent to public endpoints",
+            "yellow": "PII masked/tokenized inside private VPC tenant",
+            "green": "Zero PII/confidential data involved"
+          }
+        }
+      ]
+    }
+  ]
+}
